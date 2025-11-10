@@ -1,14 +1,14 @@
 /* --- 1. Подключение локального шрифта (SF UI Display Black) --- */
 @font-face {
-    font-family: 'SF UI Display'; /* Имя, которое мы будем использовать в коде */
-    src: url('sf-ui-display-black.ttf') format('truetype'); /* Указываем путь к твоему файлу */
-    font-weight: 900; /* Указываем, что это очень жирное начертание (Black) */
+    font-family: 'SF UI Display'; 
+    src: url('sf-ui-display-black.ttf') format('truetype'); 
+    font-weight: 900; 
     font-style: normal;
 }
 
 /* --- 2. Общие стили и применение шрифта --- */
 body {
-    font-family: 'SF UI Display', sans-serif; /* Применяем твой шрифт. Используем sans-serif как запасной */
+    font-family: 'SF UI Display', sans-serif; 
     background-color: #0d1117; 
     color: #e6edf3; 
     line-height: 1.6;
@@ -19,14 +19,13 @@ body {
     align-items: center;
     min-height: 100vh;
     box-sizing: border-box;
-    font-weight: 900; /* Применяем жирность, так как это Black */
+    font-weight: 900; 
 }
 
 .container {
     background-color: #161b22; 
     padding: 40px;
     border-radius: 18px; 
-    /* Усиленное свечение контейнера */
     box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(0, 255, 255, 0.2);
     max-width: 900px; 
     width: 100%;
@@ -46,7 +45,6 @@ header {
     font-size: 3.8em; 
     font-weight: 900;
     color: #00ffaa; 
-    /* Супер-неон */
     text-shadow: 
         0 0 10px #00ffaa,
         0 0 20px #00ffaa,
@@ -58,7 +56,7 @@ header {
     display: inline-block;
 }
 
-/* Эффекты глитча */
+/* Эффекты глитча (CSS) */
 .glitch:before,
 .glitch:after {
     content: attr(data-text);
@@ -132,7 +130,7 @@ header h2 {
     background-position: center;
     vertical-align: middle;
     margin: 0 5px;
-    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5)); /* Неоновое свечение */
+    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5)); 
 }
 
 .inline-icon-html {
@@ -151,7 +149,6 @@ section {
     border-radius: 15px; 
     background-color: #1e242b;
     border: 2px solid #2f363d; 
-    /* Усиленная тень */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 170, 255, 0.15); 
     position: relative;
     overflow: hidden; 
@@ -315,55 +312,7 @@ a:hover {
     content: '📞 '; 
 }
 
-
-/* --- 8. Футер --- */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 25px;
-    border-top: 1px solid #30363d;
-    font-size: 0.9em;
-    color: #6a737d;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
-}
-
-/* --- 9. Адаптивность --- */
-@media (max-width: 768px) {
-    .container {
-        padding: 25px;
-    }
-    .glitch {
-        font-size: 2.8em;
-        letter-spacing: 4px;
-    }
-    .price-list {
-        grid-template-columns: 1fr; 
-    }
-    .service-item {
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .glitch {
-        font-size: 2em;
-        letter-spacing: 2px;
-    }
-    header h2 {
-        font-size: 1em;
-    }
-    section h3 {
-        font-size: 1.3em;
-    }
-    .service-item h4 {
-        font-size: 1.3em;
-    }
-    .price {
-        font-size: 2em;
-    }
-
-}
-/* --- Стилизация кнопки перевода --- */
+/* --- 8. Стилизация кнопки перевода --- */
 #switch-ru-button {
     position: fixed; /* Фиксируем на экране */
     top: 20px;
@@ -387,4 +336,54 @@ footer {
     background-color: rgba(0, 170, 255, 0.1);
     box-shadow: 0 0 15px rgba(0, 170, 255, 1);
     color: #ffffff;
+}
+
+/* --- 9. Футер --- */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #30363d;
+    font-size: 0.9em;
+    color: #6a737d;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
+}
+
+/* --- 10. Адаптивность --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    .glitch {
+        font-size: 2.8em;
+        letter-spacing: 4px;
+    }
+    .price-list {
+        grid-template-columns: 1fr; 
+    }
+    #switch-ru-button {
+        top: 15px;
+        right: 15px;
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .glitch {
+        font-size: 2em;
+        letter-spacing: 2px;
+    }
+    header h2 {
+        font-size: 1em;
+    }
+    section h3 {
+        font-size: 1.3em;
+    }
+    .service-item h4 {
+        font-size: 1.3em;
+    }
+    .price {
+        font-size: 2em;
+    }
 }
