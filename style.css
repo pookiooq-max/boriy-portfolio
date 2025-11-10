@@ -361,4 +361,30 @@ footer {
     .price {
         font-size: 2em;
     }
+
+}
+/* --- Стилизация кнопки перевода --- */
+#switch-ru-button {
+    position: fixed; /* Фиксируем на экране */
+    top: 20px;
+    right: 30px; /* Справа */
+    padding: 10px 15px;
+    background-color: transparent;
+    border: 2px solid #00aaff; /* Неоновая рамка */
+    border-radius: 8px;
+    color: #e6edf3;
+    font-family: 'SF UI Display', sans-serif;
+    font-weight: 900;
+    font-size: 1.1em;
+    cursor: pointer;
+    z-index: 1000; /* Поверх всего */
+    text-shadow: 0 0 5px rgba(0, 170, 255, 0.7);
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+#switch-ru-button:hover {
+    background-color: rgba(0, 170, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 170, 255, 1);
+    color: #ffffff;
 }
