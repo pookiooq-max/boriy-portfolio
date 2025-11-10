@@ -1,0 +1,364 @@
+/* --- 1. Подключение локального шрифта (SF UI Display Black) --- */
+@font-face {
+    font-family: 'SF UI Display'; /* Имя, которое мы будем использовать в коде */
+    src: url('sf-ui-display-black.ttf') format('truetype'); /* Указываем путь к твоему файлу */
+    font-weight: 900; /* Указываем, что это очень жирное начертание (Black) */
+    font-style: normal;
+}
+
+/* --- 2. Общие стили и применение шрифта --- */
+body {
+    font-family: 'SF UI Display', sans-serif; /* Применяем твой шрифт. Используем sans-serif как запасной */
+    background-color: #0d1117; 
+    color: #e6edf3; 
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    font-weight: 900; /* Применяем жирность, так как это Black */
+}
+
+.container {
+    background-color: #161b22; 
+    padding: 40px;
+    border-radius: 18px; 
+    /* Усиленное свечение контейнера */
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(0, 255, 255, 0.2);
+    max-width: 900px; 
+    width: 100%;
+    border: 1px solid #2f363d; 
+}
+
+/* --- 3. Стили для заголовка (Неон/Glitch эффект) --- */
+header {
+    text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 3px double #30363d; 
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.glitch {
+    font-size: 3.8em; 
+    font-weight: 900;
+    color: #00ffaa; 
+    /* Супер-неон */
+    text-shadow: 
+        0 0 10px #00ffaa,
+        0 0 20px #00ffaa,
+        0 0 35px #00ffaa,
+        0 0 60px rgba(0, 255, 170, 0.8);
+    letter-spacing: 6px;
+    animation: neon-pulse 1.5s ease-in-out infinite alternate, glitch-anim 2s infinite alternate steps(5);
+    position: relative;
+    display: inline-block;
+}
+
+/* Эффекты глитча */
+.glitch:before,
+.glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #161b22;
+}
+
+.glitch:before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1; 
+    animation: glitch-anim-1 2s infinite alternate-reverse;
+}
+
+.glitch:after {
+    left: -2px;
+    text-shadow: -2px 0 #00ffff; 
+    animation: glitch-anim-2 2s infinite alternate-reverse;
+}
+
+/* Анимации Глитча и Пульса */
+@keyframes neon-pulse {
+    from {
+        text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
+        opacity: 0.9;
+    }
+    to {
+        text-shadow: 
+            0 0 20px #00ffaa, 
+            0 0 40px #00ffaa, 
+            0 0 70px #00ffaa,
+            0 0 100px rgba(0, 255, 170, 0.9);
+        opacity: 1;
+    }
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip: rect(20px, 9999px, 80px, 0); }
+    25% { clip: rect(10px, 9999px, 40px, 0); }
+    50% { clip: rect(60px, 9999px, 90px, 0); }
+    75% { clip: rect(30px, 9999px, 70px, 0); }
+    100% { clip: rect(0, 9999px, 50px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(40px, 9999px, 60px, 0); }
+    20% { clip: rect(5px, 9999px, 85px, 0); }
+    40% { clip: rect(70px, 9999px, 95px, 0); }
+    60% { clip: rect(25px, 9999px, 55px, 0); }
+    80% { clip: rect(0, 9999px, 75px, 0); }
+    100% { clip: rect(15px, 9999px, 45px, 0); }
+}
+
+header h2 {
+    color: #99a8b2;
+    font-size: 1.3em; 
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+/* --- 4. Встраиваемые иконки для секции "Обо мне" --- */
+.inline-icon-html, .inline-icon-css {
+    display: inline-block;
+    width: 24px; 
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    margin: 0 5px;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5)); /* Неоновое свечение */
+}
+
+.inline-icon-html {
+    background-image: url('html_icon.png');
+}
+
+.inline-icon-css {
+    background-image: url('css_icon.png');
+}
+
+
+/* --- 5. Стили для секций (квадратно-закругленные окошки с детализацией) --- */
+section {
+    margin-bottom: 40px; 
+    padding: 30px; 
+    border-radius: 15px; 
+    background-color: #1e242b;
+    border: 2px solid #2f363d; 
+    /* Усиленная тень */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 170, 255, 0.15); 
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Эффект фоновой ряби */
+section:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(0, 170, 255, 0.05) 0%, transparent 70%);
+    animation: rotate-bg 15s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+@keyframes rotate-bg {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+section h3 {
+    color: #00aaff;
+    border-bottom: 3px solid #00aaff; 
+    padding-bottom: 10px;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.7em; 
+    display: inline-block; 
+    text-shadow: 0 0 15px rgba(0, 170, 255, 0.6); 
+}
+
+/* --- 6. Стили для Прайс-листа --- */
+.price-list {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 30px; 
+    margin-top: 25px;
+}
+
+.service-item {
+    padding: 30px;
+    border-radius: 20px; 
+    text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    background-color: #24292e;
+}
+
+.service-item:hover {
+    transform: translateY(-10px) scale(1.03); 
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.6); 
+    z-index: 1; 
+}
+
+.html {
+    border: 3px solid #ff9900; 
+    box-shadow: 0 0 25px rgba(255, 153, 0, 0.5), inset 0 0 10px rgba(255, 153, 0, 0.2);
+}
+
+.css {
+    border: 3px solid #0099ff; 
+    box-shadow: 0 0 25px rgba(0, 153, 255, 0.5), inset 0 0 10px rgba(0, 153, 255, 0.2);
+}
+
+.service-item h4 {
+    margin-top: 20px; 
+    font-size: 1.8em; 
+    color: inherit; 
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.html h4 { color: #ff9900; }
+.css h4 { color: #0099ff; }
+
+/* Стили для иконок */
+.service-icon {
+    width: 60px; 
+    height: 60px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5)); 
+    animation: icon-float 3s ease-in-out infinite alternate;
+}
+
+@keyframes icon-float {
+    from { transform: translateY(-5px); }
+    to { transform: translateY(5px); }
+}
+
+
+.price {
+    font-size: 2.8em; 
+    font-weight: 900;
+    margin: 20px 0;
+    color: #00ffaa; 
+    text-shadow: 0 0 20px rgba(0, 255, 170, 0.8); 
+}
+
+.description {
+    font-size: 1em;
+    color: #c9d1d9;
+    min-height: 80px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- 7. Стили для Контактов и Футера (усилены) --- */
+.contact-details {
+    margin-top: 25px;
+    background-color: #24292e;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #2f363d;
+    box-shadow: inset 0 0 8px rgba(0, 170, 255, 0.2); 
+}
+
+.contact-details p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px 0;
+    border-bottom: 1px dotted #30363d;
+    font-size: 1.1em;
+}
+
+.contact-details p:last-child {
+    border-bottom: none;
+}
+
+.label {
+    color: #99a8b2;
+    font-weight: 400; 
+}
+
+a {
+    color: #00aaff; 
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+a:hover {
+    color: #4dc3ff;
+    text-shadow: 0 0 10px rgba(77, 195, 255, 0.9); 
+}
+
+.tg-link {
+    font-weight: 900; 
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.8); 
+}
+.tg-link:before {
+    content: '🚀 '; 
+}
+.phone-number:before {
+    content: '📞 '; 
+}
+
+
+/* --- 8. Футер --- */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #30363d;
+    font-size: 0.9em;
+    color: #6a737d;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
+}
+
+/* --- 9. Адаптивность --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    .glitch {
+        font-size: 2.8em;
+        letter-spacing: 4px;
+    }
+    .price-list {
+        grid-template-columns: 1fr; 
+    }
+    .service-item {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .glitch {
+        font-size: 2em;
+        letter-spacing: 2px;
+    }
+    header h2 {
+        font-size: 1em;
+    }
+    section h3 {
+        font-size: 1.3em;
+    }
+    .service-item h4 {
+        font-size: 1.3em;
+    }
+    .price {
+        font-size: 2em;
+    }
+}
