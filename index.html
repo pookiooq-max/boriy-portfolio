@@ -63,42 +63,49 @@
             <p>&copy; 2025 Boriy Dev. Сделано с ❤️ и кодом в Андижане. 🇺🇿</p>
         </footer>
     </div>
-</body>
 
-</html>
+
 <script type="text/javascript">
+// Функция инициализации Google Translate
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
     pageLanguage: 'ru',
-    includedLanguages: 'uz,ru', // Включаем узбекский и русский
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE, // Используем простой макет
-    autoDisplay: false // Отключаем автоматический показ стандартного элемента
+    includedLanguages: 'uz,ru',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
   }, 'google_translate_element');
-
-  // АВТОМАТИЧЕСКИЙ ПЕРЕВОД НА УЗБЕКСКИЙ ПРИ ЗАГРУЗКЕ
-  // Это симулирует выбор языка 'Uzbek' при загрузке страницы
-  var selectEl = document.querySelector('.goog-te-combo');
-  if (selectEl) {
-    selectEl.value = 'uz'; // Устанавливаем узбекский язык
-    selectEl.dispatchEvent(new Event('change')); // Запускаем событие перевода
-  }
-
-  // Скрытие стандартной панели после перевода
-  setTimeout(function(){
-      var gte = document.getElementById('google_translate_element');
-      if (gte) {
-          gte.style.display = 'none'; 
-      }
-  }, 1000); // Небольшая задержка, чтобы Google успел загрузиться и перевести
 }
+
+// Функция для установки языка перевода
+function setLanguage(langCode) {
+    var selectEl = document.querySelector('.goog-te-combo');
+    if (selectEl) {
+        // Находим и устанавливаем нужное значение
+        selectEl.value = langCode; 
+        selectEl.dispatchEvent(new Event('change'));
+    }
+}
+
+// АВТОМАТИЧЕСКИЙ ПЕРЕВОД НА УЗБЕКСКИЙ (uz)
+// Вызываем функцию установки языка через 2 секунды после загрузки страницы.
+window.onload = function() {
+    // Вставляем небольшую задержку для надежности
+    setTimeout(function() {
+        setLanguage('uz');
+        
+        // Дополнительно скрываем стандартную панель после перевода
+        setTimeout(function(){
+             var gte = document.getElementById('google_translate_element');
+             if (gte) { gte.style.display = 'none'; }
+        }, 500); // 0.5 секунды после перевода
+        
+    }, 2000); // Задержка 2 секунды перед автопереводом
+};
+
 
 // Функция для переключения на Русский язык по кнопке
 function switchToRussian() {
-    var selectEl = document.querySelector('.goog-te-combo');
-    if (selectEl) {
-        selectEl.value = 'ru'; // Устанавливаем русский язык
-        selectEl.dispatchEvent(new Event('change'));
-    }
+    setLanguage('ru');
 }
 </script>
 
@@ -107,6 +114,5 @@ function switchToRussian() {
 <div id="google_translate_element" style="position: absolute; top: -9999px;"></div>
 
 <button id="switch-ru-button" onclick="switchToRussian()">Русский 🇷🇺</button>
-
 </body>
 </html>
